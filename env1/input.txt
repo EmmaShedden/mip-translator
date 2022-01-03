@@ -1,0 +1,5 @@
+var a : Int
+var b : Float
+var c : -1 .. 1
+var d : 0.0 .. 1.0
+var e : 
