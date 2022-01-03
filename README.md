@@ -1,6 +1,6 @@
 # MIP-translator
 
-##### This folder contains my working drafts of the environment model components
+### This folder contains my working drafts of the environment model components
 
 **env1:** 
 -   just recognize the grammar
