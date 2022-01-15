@@ -23,6 +23,7 @@ This folder contains my working drafts of the environment model components
     -   this exists & is even sort of tested
 -   \[P\] started boolean support but then gave up, technically you can declare a boolean but won't be able to assign anything logical to it
 -   \[STATE\] currently, test inputs 1, 4, & 6 are expected to produce an output MiniZinc file, because they're the only ones that are formatted correctly according to the parser & Symbol Table Builder
+-   \[TODO\] make sure MiniZinc Program Builder actually looks at number values, not just the name parameter, so that the output formatting isn't quirky
 
 ## Usage
 
