@@ -19,4 +19,4 @@ d = (1 + 3) * 4 * 0 - 2;
 a_prime = a * 2;
 b_prime = (a + b) / 2;
 c_prime = 9.0 - 4 - 3 - 2;
-d_prime = 2 * 3 * -1;
+d_prime = 2 * (3 * -1);

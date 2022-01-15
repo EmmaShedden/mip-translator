@@ -9,34 +9,36 @@ public interface EnvConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int INTLABEL = 4;
+  int INTLABEL = 7;
   /** RegularExpression Id. */
-  int FLOATLABEL = 5;
+  int FLOATLABEL = 8;
   /** RegularExpression Id. */
-  int BOOLLABEL = 6;
+  int BOOLLABEL = 9;
   /** RegularExpression Id. */
-  int VARLABEL = 7;
+  int VARLABEL = 10;
   /** RegularExpression Id. */
-  int INF = 8;
+  int INF = 11;
   /** RegularExpression Id. */
-  int TRUE = 9;
+  int TRUE = 12;
   /** RegularExpression Id. */
-  int FALSE = 10;
+  int FALSE = 13;
   /** RegularExpression Id. */
-  int DIGIT = 11;
+  int DIGIT = 14;
   /** RegularExpression Id. */
-  int INTEGER = 12;
+  int INTEGER = 15;
   /** RegularExpression Id. */
-  int FLOAT = 13;
+  int FLOAT = 16;
   /** RegularExpression Id. */
-  int LETTER = 14;
+  int LETTER = 17;
   /** RegularExpression Id. */
-  int WORD = 15;
+  int WORD = 18;
   /** RegularExpression Id. */
-  int PRIMEWORD = 16;
+  int PRIMEWORD = 19;
 
   /** Lexical state. */
   int DEFAULT = 0;
+  /** Lexical state. */
+  int WithinComment = 1;
 
   /** Literal token values. */
   String[] tokenImage = {
@@ -44,6 +46,9 @@ public interface EnvConstants {
     "\" \"",
     "\"\\t\"",
     "\"\\f\"",
+    "\"/*\"",
+    "\"*/\"",
+    "<token of kind 6>",
     "\"Int\"",
     "\"Float\"",
     "\"Bool\"",

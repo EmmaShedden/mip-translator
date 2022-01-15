@@ -75,6 +75,13 @@ public class MinizincVisitor implements EnvVisitor {
         return node.getParentName() + "_prime";
     }
 
+    private String exprParens(Node node, String term) {
+        if (node.getClass() == ASTExpression.class) {
+            return "(" + term + ")";
+        }
+        return term;
+    }
+
     // always >1 children
     public Object visit(ASTExpression node, Object data) {
         //data = node.childrenAccept(this, data);
@@ -82,17 +89,19 @@ public class MinizincVisitor implements EnvVisitor {
         // running LHS partial expression
         // Expression is never terminal, so this is safe
         String text = (String) node.jjtGetChild(0).jjtAccept(this, null);
+        text = exprParens(node.jjtGetChild(0), text);
 
         // Incorporate successive RHS factors
         for (int i = 1; i < node.jjtGetNumChildren(); ++i) {
             String next = (String) node.jjtGetChild(i).jjtAccept(this, null);
+            next = exprParens(node.jjtGetChild(i), next);
             text = text + " " + node.getOps(i-1) + " " + next;
         }
         return text;
     }
 
     private String termParens(Node node, String factor) {
-        if (node.getClass() == ASTExpression.class) {
+        if (node.getClass() == ASTExpression.class || node.getClass() == ASTTerm.class) {
             return "(" + factor + ")";
         }
         return factor;
@@ -182,6 +191,13 @@ public class MinizincVisitor implements EnvVisitor {
         return left + " .. " + right;
     }
 
+    private String constExprParens(Node node, String term) {
+        if (node.getClass() == ASTConstExpression.class) {
+            return "(" + term + ")";
+        }
+        return term;
+    }
+
     // >1 children
     public Object visit(ASTConstExpression node, Object data) {
         //data = node.childrenAccept(this, data);
@@ -189,17 +205,19 @@ public class MinizincVisitor implements EnvVisitor {
         // running LHS partial expression
         // Expression is never terminal, so this is safe
         String text = (String) node.jjtGetChild(0).jjtAccept(this, null);
+        text = constExprParens(node.jjtGetChild(0), text);
 
         // Incorporate successive RHS factors
         for (int i = 1; i < node.jjtGetNumChildren(); ++i) {
             String next = (String) node.jjtGetChild(i).jjtAccept(this, null);
+            next = constExprParens(node.jjtGetChild(i), next);
             text = text + " " + node.getOps(i-1) + " " + next;
         }
         return text;
     }
 
     private String constTermParens(Node node, String factor) {
-        if (node.getClass() == ASTConstExpression.class) {
+        if (node.getClass() == ASTConstExpression.class || node.getClass() == ASTConstTerm.class) {
             return "(" + factor + ")";
         }
         return factor;
