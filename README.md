@@ -2,6 +2,8 @@
 
 This folder contains my working drafts of the environment model components
 
+You probably care about `env4`, as everything else is old
+
 ## Index
 
 **env1:** 
