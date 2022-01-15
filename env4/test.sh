@@ -28,8 +28,8 @@ java Env output-2.mzn < input-2.txt
 
 echo
 echo
-echo "** TEST 3 : Access & no declaration **"
-echo "** Expected : RuntimeException \"Referenced unknown symbol: b\" ** "
+echo "** TEST 3 : Accepted, with comments ignored **"
+echo "** Expected : {a=Float} ** "
 echo
 java Env output-3.mzn < input-3.txt
 

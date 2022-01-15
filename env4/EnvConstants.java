@@ -9,31 +9,33 @@ public interface EnvConstants {
   /** End of File. */
   int EOF = 0;
   /** RegularExpression Id. */
-  int INTLABEL = 7;
+  int COMMENT = 4;
   /** RegularExpression Id. */
-  int FLOATLABEL = 8;
+  int INTLABEL = 8;
   /** RegularExpression Id. */
-  int BOOLLABEL = 9;
+  int FLOATLABEL = 9;
   /** RegularExpression Id. */
-  int VARLABEL = 10;
+  int BOOLLABEL = 10;
   /** RegularExpression Id. */
-  int INF = 11;
+  int VARLABEL = 11;
   /** RegularExpression Id. */
-  int TRUE = 12;
+  int INF = 12;
   /** RegularExpression Id. */
-  int FALSE = 13;
+  int TRUE = 13;
   /** RegularExpression Id. */
-  int DIGIT = 14;
+  int FALSE = 14;
   /** RegularExpression Id. */
-  int INTEGER = 15;
+  int DIGIT = 15;
   /** RegularExpression Id. */
-  int FLOAT = 16;
+  int INTEGER = 16;
   /** RegularExpression Id. */
-  int LETTER = 17;
+  int FLOAT = 17;
   /** RegularExpression Id. */
-  int WORD = 18;
+  int LETTER = 18;
   /** RegularExpression Id. */
-  int PRIMEWORD = 19;
+  int WORD = 19;
+  /** RegularExpression Id. */
+  int PRIMEWORD = 20;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -46,9 +48,10 @@ public interface EnvConstants {
     "\" \"",
     "\"\\t\"",
     "\"\\f\"",
+    "<COMMENT>",
     "\"/*\"",
     "\"*/\"",
-    "<token of kind 6>",
+    "<token of kind 7>",
     "\"Int\"",
     "\"Float\"",
     "\"Bool\"",

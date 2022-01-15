@@ -1,8 +1,15 @@
+// go
 var a : Int
 
-a = 1.0
 /*
-hello
+hel
+lo
 */
 
+a = 1.0
+
+// world
+
 a' = a * 0 + 1*-3 - -2 * (45 + 3 / (2/2) - (32 - 45))
+// blue
+// wolverines
