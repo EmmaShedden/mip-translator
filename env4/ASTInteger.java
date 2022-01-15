@@ -19,6 +19,10 @@ public class ASTInteger extends SimpleNode {
     name = n;
   }
 
+  public String getName() {
+    return name;
+  }
+
   /**
    * {@inheritDoc}
    * @see org.javacc.examples.jjtree.eg2.SimpleNode#toString()

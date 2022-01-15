@@ -1,0 +1,35 @@
+Root
+ TypeDef
+  Var: a
+  Range
+   ConstFactor: -
+    Int: infinity
+   Int: infinity
+ TypeDef
+  Var: b
+  Range
+   ConstFactor: -
+    Int: infinity
+   ConstFactor: +
+    Int: infinity
+ TypeDef
+  Var: c
+  Range
+   Int: 2
+   Int: infinity
+ TypeDef
+  Var: d
+  Range
+   ConstFactor: -
+    Int: infinity
+   Int: 12
+ TypeDef
+  Var: e
+  Range
+   Float: 0.1
+   ConstFactor: -
+    Int: infinity
+ Assignment
+  Var: c
+  Sign: -
+   Int: 1

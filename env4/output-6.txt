@@ -1,0 +1,14 @@
+% auto-generated environment model, does not include constraints
+
+var -infinity .. 0 : a;
+var -infinity .. 0 : a_prime;
+
+var 0 .. infinity : b;
+var 0 .. infinity : b_prime;
+
+var int : c;
+var int : c_prime;
+
+a = -2;
+b = -a;
+c = 23456543 - 098344334;

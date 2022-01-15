@@ -1,0 +1,12 @@
+Root
+ Assignment
+  Var: a
+  Float: 1.0
+ TypeDef
+  Var: a
+  Type: int
+ Assignment
+  PrimeVar: a'
+  Term: [*]
+   Var: a
+   Int: 2

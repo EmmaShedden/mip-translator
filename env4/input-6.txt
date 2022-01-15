@@ -1,0 +1,7 @@
+var a : -infinity .. 0
+var b : 0 .. infinity
+var c : -infinity .. +infinity
+
+a = -2
+b = -a
+c = 23456543 - 098344334

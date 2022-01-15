@@ -13,7 +13,15 @@ public class ASTTerm extends SimpleNode {
   }
 
   public void setOps(List<String> o) {
-    ops = new ArrayList(o);
+    ops = new ArrayList<String>(o);
+  }
+
+  public List<String> getOps() {
+    return ops;
+  }
+
+  public String getOps(int i) {
+    return ops.get(i);
   }
 
   public String toString() {

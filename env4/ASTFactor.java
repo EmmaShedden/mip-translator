@@ -14,6 +14,10 @@ public class ASTFactor extends SimpleNode {
     name = n;
   }
 
+  public String getName() {
+    return name;
+  }
+
   public String toString() {
     return "Sign: " + name;
   }

@@ -12,13 +12,13 @@ public class SymbolTableEntry implements Object {
 public class SymbolTableVisitor implements EnvVisitor {
 
     //private List<SymbolTableEntry> ST = new ArrayList<SymbolTableEntry>();
-    public Hashtable ST = new Hashtable<String, Type>();
+    public Hashtable<String, Type> ST = new Hashtable<String, Type>();
 
     public Hashtable getST() {
         return ST;
     }
 
-    public Object visit(SimpleNode node, Object data) {
+    public Object visit(SimpleNode node, Object data) throws RuntimeException {
 	    throw new RuntimeException("Visit SimpleNode");
     }
 
@@ -67,6 +67,9 @@ public class SymbolTableVisitor implements EnvVisitor {
     public Object visit(ASTInteger node, Object data) {
         //data = node.childrenAccept(this, data);
         //return data;
+        if (node.getName().equals("infinity")) {
+            throw new InfinityException();
+        }
         return node.jjtGetValue();
     }
 
@@ -114,8 +117,32 @@ public class SymbolTableVisitor implements EnvVisitor {
     // No symbols from here on down (return type instead to use in TypeDef visit)
     public Object visit(ASTRange node, Object data) {
         //data = node.childrenAccept(this, data);
-        Number a = (Number) node.jjtGetChild(0).jjtAccept(this, data);
-        Number b = (Number) node.jjtGetChild(1).jjtAccept(this, data);
+        Number a, b;
+        try {
+            a = (Number) node.jjtGetChild(0).jjtAccept(this, data);
+        } catch (InfinityException e) {
+            if (!e.pos) {
+                try {
+                    b = (Number) node.jjtGetChild(1).jjtAccept(this, data);
+                } catch (InfinityException f) {
+                    if (f.pos) {
+                        return new Type(DataType.Int);
+                    } else {
+                        throw new InfinityException("Upper bound of -infinity");
+                    }
+                }
+                return new RestrictedType(false, b);
+            }
+            throw new InfinityException("Lower bound of +infinity");
+        }
+        try {
+            b = (Number) node.jjtGetChild(1).jjtAccept(this, data);
+        } catch (InfinityException e) {
+            if (e.pos) {
+                return new RestrictedType(a, false);
+            }
+            throw new InfinityException("Upper bound of -infinity");
+        }
         return new RestrictedType(a, b);
     }
 
@@ -185,7 +212,16 @@ public class SymbolTableVisitor implements EnvVisitor {
 
     public Object visit(ASTConstFactor node, Object data) {
         //data = node.childrenAccept(this, data);
-        Number num = (Number) node.jjtGetChild(0).jjtAccept(this, data);
+        Number num;
+        try {
+            num = (Number) node.jjtGetChild(0).jjtAccept(this, data);
+        } catch (InfinityException e) {
+            if (node.getName().equals("-")) {
+                e.pos = false;
+            }
+            throw e;
+        }
+        
         if (node.getName().equals("-")) {
             if (num.getClass() == Integer.class) {
                 return Integer.valueOf(-1 * num.intValue());

@@ -6,25 +6,29 @@ import java.util.*;
 public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@bgen(jjtree)*/
   protected static JJTEnvState jjtree = new JJTEnvState();// Main entry point
 
-    public static void main(String args[]) throws ParseException, TokenMgrError, FileNotFoundException {
+    public static void main(String args[]) throws ParseException, TokenMgrError, FileNotFoundException, IOException {
         Env parser;
-        if (args.length == 0) {
+        if (args.length == 1) {
             parser = new Env(System.in);
-        } else if (args.length == 1) {
-            parser = new Env(new FileInputStream("input.txt"));
+        } else if (args.length == 2) {
+            parser = new Env(new FileInputStream(args[1]));
         } else {
-            throw new RuntimeException("Incorrect usage: only input filename can be passed by command line");
+            throw new RuntimeException("Incorrect usage: only output (required) & input (optional) filenames can be passed by command line (in that order)");
         }
 
         ASTRoot n = parser.Root();
 
-        System.out.println("\n");
-        n.dump("");
-        System.out.println("\n");
+        //System.out.println("\n");
+        //n.dump("");
+        //System.out.println("\n");
 
         SymbolTableVisitor v = new SymbolTableVisitor();
         n.jjtAccept(v, null);
         System.out.println("\n\n" + v.getST());
+
+        MinizincVisitor m = new MinizincVisitor();
+        n.jjtAccept(m, args[0]);
+        System.out.println("\n\nMiniZinc Program Complete");
     }
 
   static final public ASTRoot Root() throws ParseException {
@@ -36,8 +40,8 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       label_1:
       while (true) {
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 13:
-        case 14:
+        case 17:
+        case 18:
           ;
           break;
         default:
@@ -45,11 +49,11 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           break label_1;
         }
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 13:
-          jj_consume_token(13);
+        case 17:
+          jj_consume_token(17);
           break;
-        case 14:
-          jj_consume_token(14);
+        case 18:
+          jj_consume_token(18);
           break;
         default:
           jj_la1[1] = jj_gen;
@@ -73,8 +77,8 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       label_2:
       while (true) {
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 13:
-        case 14:
+        case 17:
+        case 18:
           ;
           break;
         default:
@@ -84,11 +88,11 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
         label_3:
         while (true) {
           switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-          case 13:
-            jj_consume_token(13);
+          case 17:
+            jj_consume_token(17);
             break;
-          case 14:
-            jj_consume_token(14);
+          case 18:
+            jj_consume_token(18);
             break;
           default:
             jj_la1[4] = jj_gen;
@@ -96,8 +100,8 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
             throw new ParseException();
           }
           switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-          case 13:
-          case 14:
+          case 17:
+          case 18:
             ;
             break;
           default:
@@ -166,7 +170,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
         jj_consume_token(-1);
         throw new ParseException();
       }
-      jj_consume_token(15);
+      jj_consume_token(19);
       Expression();
     } catch (Throwable jjte000) {
       if (jjtc000) {
@@ -233,8 +237,8 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       label_4:
       while (true) {
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 16:
-        case 17:
+        case 20:
+        case 21:
           ;
           break;
         default:
@@ -242,11 +246,11 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           break label_4;
         }
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 16:
-          op = jj_consume_token(16).image;
+        case 20:
+          op = jj_consume_token(20).image;
           break;
-        case 17:
-          op = jj_consume_token(17).image;
+        case 21:
+          op = jj_consume_token(21).image;
           break;
         default:
           jj_la1[9] = jj_gen;
@@ -290,8 +294,8 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       label_5:
       while (true) {
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 18:
-        case 19:
+        case 22:
+        case 23:
           ;
           break;
         default:
@@ -299,11 +303,11 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           break label_5;
         }
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 18:
-          op = jj_consume_token(18).image;
+        case 22:
+          op = jj_consume_token(22).image;
           break;
-        case 19:
-          op = jj_consume_token(19).image;
+        case 23:
+          op = jj_consume_token(23).image;
           break;
         default:
           jj_la1[11] = jj_gen;
@@ -339,28 +343,29 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
 
   static final public void Factor() throws ParseException {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case INF:
     case INTEGER:
     case FLOAT:
     case WORD:
-    case 20:
+    case 24:
       Primary();
       break;
-    case 16:
-    case 17:
+    case 20:
+    case 21:
         ASTFactor jjtn001 = new ASTFactor(JJTFACTOR);
         boolean jjtc001 = true;
         jjtree.openNodeScope(jjtn001);
       try {
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 16:
-          jj_consume_token(16);
+        case 20:
+          jj_consume_token(20);
           Primary();
                         jjtree.closeNodeScope(jjtn001, true);
                         jjtc001 = false;
                        jjtn001.setName("+");
           break;
-        case 17:
-          jj_consume_token(17);
+        case 21:
+          jj_consume_token(21);
           Primary();
                           jjtree.closeNodeScope(jjtn001, true);
                           jjtc001 = false;
@@ -400,6 +405,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
 
   static final public void Primary() throws ParseException {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case INF:
     case INTEGER:
       Integer();
       break;
@@ -409,10 +415,10 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     case WORD:
       Var();
       break;
-    case 20:
-      jj_consume_token(20);
+    case 24:
+      jj_consume_token(24);
       Expression();
-      jj_consume_token(21);
+      jj_consume_token(25);
       break;
     default:
       jj_la1[14] = jj_gen;
@@ -427,11 +433,26 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
                   boolean jjtc000 = true;
                   jjtree.openNodeScope(jjtn000);Token t;
     try {
-      t = jj_consume_token(INTEGER);
+      switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+      case INTEGER:
+        t = jj_consume_token(INTEGER);
       jjtree.closeNodeScope(jjtn000, true);
       jjtc000 = false;
         jjtn000.setName(t.image);
         jjtn000.jjtSetValue(Integer.valueOf(t.image));
+        break;
+      case INF:
+        t = jj_consume_token(INF);
+      jjtree.closeNodeScope(jjtn000, true);
+      jjtc000 = false;
+        jjtn000.setName(t.image);
+        jjtn000.jjtSetValue(null);
+        break;
+      default:
+        jj_la1[15] = jj_gen;
+        jj_consume_token(-1);
+        throw new ParseException();
+      }
     } finally {
       if (jjtc000) {
         jjtree.closeNodeScope(jjtn000, true);
@@ -465,21 +486,23 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     try {
       jj_consume_token(VARLABEL);
       Var();
-      jj_consume_token(22);
+      jj_consume_token(26);
       switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
       case INTLABEL:
       case FLOATLABEL:
+      case BOOLLABEL:
         Type();
         break;
+      case INF:
       case INTEGER:
       case FLOAT:
-      case 16:
-      case 17:
       case 20:
+      case 21:
+      case 24:
         Range();
         break;
       default:
-        jj_la1[15] = jj_gen;
+        jj_la1[16] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -517,14 +540,17 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       case FLOATLABEL:
         t = jj_consume_token(FLOATLABEL);
         break;
+      case BOOLLABEL:
+        t = jj_consume_token(BOOLLABEL);
+        break;
       default:
-        jj_la1[16] = jj_gen;
+        jj_la1[17] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
       jjtree.closeNodeScope(jjtn000, true);
       jjtc000 = false;
-        jjtn000.set(t.image);
+        jjtn000.set(t.image.toLowerCase());
     } finally {
       if (jjtc000) {
         jjtree.closeNodeScope(jjtn000, true);
@@ -540,7 +566,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
   jjtree.openNodeScope(jjtn000);
     try {
       ConstExpression();
-      jj_consume_token(23);
+      jj_consume_token(27);
       ConstExpression();
     } catch (Throwable jjte000) {
       if (jjtc000) {
@@ -573,23 +599,23 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       label_6:
       while (true) {
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 16:
-        case 17:
+        case 20:
+        case 21:
           ;
           break;
         default:
-          jj_la1[17] = jj_gen;
+          jj_la1[18] = jj_gen;
           break label_6;
         }
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 16:
-          op = jj_consume_token(16).image;
+        case 20:
+          op = jj_consume_token(20).image;
           break;
-        case 17:
-          op = jj_consume_token(17).image;
+        case 21:
+          op = jj_consume_token(21).image;
           break;
         default:
-          jj_la1[18] = jj_gen;
+          jj_la1[19] = jj_gen;
           jj_consume_token(-1);
           throw new ParseException();
         }
@@ -630,23 +656,23 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       label_7:
       while (true) {
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 18:
-        case 19:
+        case 22:
+        case 23:
           ;
           break;
         default:
-          jj_la1[19] = jj_gen;
+          jj_la1[20] = jj_gen;
           break label_7;
         }
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 18:
-          op = jj_consume_token(18).image;
+        case 22:
+          op = jj_consume_token(22).image;
           break;
-        case 19:
-          op = jj_consume_token(19).image;
+        case 23:
+          op = jj_consume_token(23).image;
           break;
         default:
-          jj_la1[20] = jj_gen;
+          jj_la1[21] = jj_gen;
           jj_consume_token(-1);
           throw new ParseException();
         }
@@ -679,34 +705,35 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
 
   static final public void ConstFactor() throws ParseException {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case INF:
     case INTEGER:
     case FLOAT:
-    case 20:
+    case 24:
       ConstPrimary();
       break;
-    case 16:
-    case 17:
+    case 20:
+    case 21:
         ASTConstFactor jjtn001 = new ASTConstFactor(JJTCONSTFACTOR);
         boolean jjtc001 = true;
         jjtree.openNodeScope(jjtn001);
       try {
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
-        case 16:
-          jj_consume_token(16);
+        case 20:
+          jj_consume_token(20);
           ConstPrimary();
                              jjtree.closeNodeScope(jjtn001, true);
                              jjtc001 = false;
                             jjtn001.setName("+");
           break;
-        case 17:
-          jj_consume_token(17);
+        case 21:
+          jj_consume_token(21);
           ConstPrimary();
                                jjtree.closeNodeScope(jjtn001, true);
                                jjtc001 = false;
                               jjtn001.setName("-");
           break;
         default:
-          jj_la1[21] = jj_gen;
+          jj_la1[22] = jj_gen;
           jj_consume_token(-1);
           throw new ParseException();
         }
@@ -731,7 +758,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       }
       break;
     default:
-      jj_la1[22] = jj_gen;
+      jj_la1[23] = jj_gen;
       jj_consume_token(-1);
       throw new ParseException();
     }
@@ -739,19 +766,20 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
 
   static final public void ConstPrimary() throws ParseException {
     switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+    case INF:
     case INTEGER:
       Integer();
       break;
     case FLOAT:
       Float();
       break;
-    case 20:
-      jj_consume_token(20);
+    case 24:
+      jj_consume_token(24);
       ConstExpression();
-      jj_consume_token(21);
+      jj_consume_token(25);
       break;
     default:
-      jj_la1[23] = jj_gen;
+      jj_la1[24] = jj_gen;
       jj_consume_token(-1);
       throw new ParseException();
     }
@@ -767,13 +795,13 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
   static public Token jj_nt;
   static private int jj_ntk;
   static private int jj_gen;
-  static final private int[] jj_la1 = new int[24];
+  static final private int[] jj_la1 = new int[25];
   static private int[] jj_la1_0;
   static {
       jj_la1_init_0();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x6000,0x6000,0x1840,0x6000,0x6000,0x6000,0x1841,0x1800,0x30000,0x30000,0xc0000,0xc0000,0x30000,0x130b00,0x100b00,0x130330,0x30,0x30000,0x30000,0xc0000,0xc0000,0x30000,0x130300,0x100300,};
+      jj_la1_0 = new int[] {0x60000,0x60000,0x18080,0x60000,0x60000,0x60000,0x18081,0x18000,0x300000,0x300000,0xc00000,0xc00000,0x300000,0x130b100,0x100b100,0x1100,0x1303170,0x70,0x300000,0x300000,0xc00000,0xc00000,0x300000,0x1303100,0x1003100,};
    }
 
   /** Constructor with InputStream. */
@@ -794,7 +822,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 24; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 25; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -809,7 +837,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     jj_ntk = -1;
     jjtree.reset();
     jj_gen = 0;
-    for (int i = 0; i < 24; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 25; i++) jj_la1[i] = -1;
   }
 
   /** Constructor. */
@@ -826,7 +854,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 24; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 25; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -837,7 +865,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     jj_ntk = -1;
     jjtree.reset();
     jj_gen = 0;
-    for (int i = 0; i < 24; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 25; i++) jj_la1[i] = -1;
   }
 
   /** Constructor with generated Token Manager. */
@@ -853,7 +881,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 24; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 25; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -863,7 +891,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     jj_ntk = -1;
     jjtree.reset();
     jj_gen = 0;
-    for (int i = 0; i < 24; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 25; i++) jj_la1[i] = -1;
   }
 
   static private Token jj_consume_token(int kind) throws ParseException {
@@ -914,12 +942,12 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
   /** Generate ParseException. */
   static public ParseException generateParseException() {
     jj_expentries.clear();
-    boolean[] la1tokens = new boolean[24];
+    boolean[] la1tokens = new boolean[28];
     if (jj_kind >= 0) {
       la1tokens[jj_kind] = true;
       jj_kind = -1;
     }
-    for (int i = 0; i < 24; i++) {
+    for (int i = 0; i < 25; i++) {
       if (jj_la1[i] == jj_gen) {
         for (int j = 0; j < 32; j++) {
           if ((jj_la1_0[i] & (1<<j)) != 0) {
@@ -928,7 +956,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
         }
       }
     }
-    for (int i = 0; i < 24; i++) {
+    for (int i = 0; i < 28; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

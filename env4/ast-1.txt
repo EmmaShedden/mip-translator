@@ -1,0 +1,77 @@
+Root
+ TypeDef
+  Var: a
+  Type: int
+ TypeDef
+  Var: b
+  Type: float
+ TypeDef
+  Var: c
+  Range
+   ConstFactor: -
+    Float: 0.0
+   ConstFactor: +
+    Float: 1.0
+ TypeDef
+  Var: d
+  Range
+   ConstFactor: -
+    Int: 10
+   Int: 0
+ Assignment
+  Var: a
+  Term: [*]
+   Sign: -
+    Expression: [+]
+     Int: 32
+     Int: 5
+   Sign: -
+    Int: 3
+ Assignment
+  Var: b
+  Float: 1.0
+ Assignment
+  Var: c
+  Expression: [+, -]
+   Term: [/]
+    Var: a
+    Var: b
+   Int: 0
+   Int: 110
+ Assignment
+  Var: d
+  Expression: [-]
+   Term: [*, *]
+    Expression: [+]
+     Int: 1
+     Int: 3
+    Int: 4
+    Int: 0
+   Int: 2
+ Assignment
+  PrimeVar: a'
+  Term: [*]
+   Var: a
+   Int: 2
+ Assignment
+  PrimeVar: b'
+  Term: [/]
+   Expression: [+]
+    Var: a
+    Var: b
+   Int: 2
+ Assignment
+  PrimeVar: c'
+  Expression: [-, -, -]
+   Float: 9.0
+   Int: 4
+   Int: 3
+   Int: 2
+ Assignment
+  PrimeVar: d'
+  Term: [*]
+   Int: 2
+   Term: [*]
+    Int: 3
+    Sign: -
+     Int: 1

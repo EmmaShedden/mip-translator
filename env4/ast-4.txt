@@ -1,0 +1,113 @@
+Root
+ TypeDef
+  Var: a
+  Type: int
+ TypeDef
+  Var: b
+  Type: float
+ TypeDef
+  Var: c
+  Range
+   ConstFactor: -
+    Float: 0.0
+   ConstFactor: +
+    ConstExpression: [+, +]
+     Float: 1.0
+     Int: 3
+     ConstTerm: [/]
+      Int: 2
+      Int: 3
+ TypeDef
+  Var: d
+  Range
+   ConstFactor: -
+    Int: 10
+   Int: 0
+ Assignment
+  Var: a
+  Float: 1.0
+ Assignment
+  Var: b
+  Term: [*]
+   Sign: -
+    Expression: [+]
+     Int: 32
+     Int: 5
+   Sign: -
+    Int: 3
+ Assignment
+  Var: c
+  Expression: [+]
+   Term: [/]
+    Var: a
+    Var: b
+   Int: 0
+ Assignment
+  Var: d
+  Expression: [-]
+   Term: [*, *]
+    Expression: [+]
+     Int: 1
+     Int: 3
+    Int: 4
+    Int: 0
+   Int: 2
+ Assignment
+  PrimeVar: a'
+  Term: [*]
+   Var: a
+   Int: 2
+ Assignment
+  PrimeVar: b'
+  Term: [/]
+   Expression: [+]
+    Var: a
+    Var: b
+   Int: 2
+ Assignment
+  PrimeVar: c'
+  Expression: [-]
+   Float: 9.0
+   Term: [*, *]
+    Int: 4
+    Var: c
+    Sign: -
+     Var: c
+ Assignment
+  PrimeVar: d'
+  Term: [*]
+   Float: 2.1
+   Int: 3
+ TypeDef
+  Var: e
+  Range
+   ConstFactor: -
+    Int: 5678
+   ConstExpression: [-, +]
+    ConstExpression: [+]
+     ConstFactor: -
+      Int: 2
+     Int: 13
+    ConstTerm: [*, /]
+     Int: 42
+     Int: 34
+     Int: 17
+    ConstFactor: -
+     Int: 1
+ TypeDef
+  Var: f
+  Range
+   ConstExpression: [-]
+    Int: 0
+    Float: 8.8
+   ConstTerm: [*, *]
+    ConstExpression: [+]
+     ConstTerm: [/]
+      Int: 33
+      Int: 45
+     Int: 42
+    ConstFactor: -
+     Int: 1
+    ConstFactor: -
+     Int: 1
+

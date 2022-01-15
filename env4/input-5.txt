@@ -1,0 +1,7 @@
+var a : -infinity .. infinity
+var b : -infinity .. +infinity
+var c : 2 .. infinity
+var d : -infinity .. 12
+var e : 0.1 .. -infinity
+
+c = -1

@@ -13,19 +13,27 @@ public interface EnvConstants {
   /** RegularExpression Id. */
   int FLOATLABEL = 5;
   /** RegularExpression Id. */
-  int VARLABEL = 6;
+  int BOOLLABEL = 6;
   /** RegularExpression Id. */
-  int DIGIT = 7;
+  int VARLABEL = 7;
   /** RegularExpression Id. */
-  int INTEGER = 8;
+  int INF = 8;
   /** RegularExpression Id. */
-  int FLOAT = 9;
+  int TRUE = 9;
   /** RegularExpression Id. */
-  int LETTER = 10;
+  int FALSE = 10;
   /** RegularExpression Id. */
-  int WORD = 11;
+  int DIGIT = 11;
   /** RegularExpression Id. */
-  int PRIMEWORD = 12;
+  int INTEGER = 12;
+  /** RegularExpression Id. */
+  int FLOAT = 13;
+  /** RegularExpression Id. */
+  int LETTER = 14;
+  /** RegularExpression Id. */
+  int WORD = 15;
+  /** RegularExpression Id. */
+  int PRIMEWORD = 16;
 
   /** Lexical state. */
   int DEFAULT = 0;
@@ -38,7 +46,11 @@ public interface EnvConstants {
     "\"\\f\"",
     "\"Int\"",
     "\"Float\"",
+    "\"Bool\"",
     "\"var\"",
+    "\"infinity\"",
+    "\"true\"",
+    "\"false\"",
     "<DIGIT>",
     "<INTEGER>",
     "<FLOAT>",
