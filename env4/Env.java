@@ -71,15 +71,31 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       case WORD:
       case PRIMEWORD:
         Assignment();
+        switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+        case COMMENT:
+          jj_consume_token(COMMENT);
+          break;
+        default:
+          jj_la1[2] = jj_gen;
+          ;
+        }
         break;
       case VARLABEL:
         TypeDef();
+        switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+        case COMMENT:
+          jj_consume_token(COMMENT);
+          break;
+        default:
+          jj_la1[3] = jj_gen;
+          ;
+        }
         break;
       case COMMENT:
         jj_consume_token(COMMENT);
         break;
       default:
-        jj_la1[2] = jj_gen;
+        jj_la1[4] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -91,7 +107,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           ;
           break;
         default:
-          jj_la1[3] = jj_gen;
+          jj_la1[5] = jj_gen;
           break label_2;
         }
         label_3:
@@ -104,7 +120,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
             jj_consume_token(22);
             break;
           default:
-            jj_la1[4] = jj_gen;
+            jj_la1[6] = jj_gen;
             jj_consume_token(-1);
             throw new ParseException();
           }
@@ -114,7 +130,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
             ;
             break;
           default:
-            jj_la1[5] = jj_gen;
+            jj_la1[7] = jj_gen;
             break label_3;
           }
         }
@@ -122,9 +138,25 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
         case WORD:
         case PRIMEWORD:
           Assignment();
+          switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+          case COMMENT:
+            jj_consume_token(COMMENT);
+            break;
+          default:
+            jj_la1[8] = jj_gen;
+            ;
+          }
           break;
         case VARLABEL:
           TypeDef();
+          switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
+          case COMMENT:
+            jj_consume_token(COMMENT);
+            break;
+          default:
+            jj_la1[9] = jj_gen;
+            ;
+          }
           break;
         case COMMENT:
           jj_consume_token(COMMENT);
@@ -133,7 +165,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           jj_consume_token(0);
           break;
         default:
-          jj_la1[6] = jj_gen;
+          jj_la1[10] = jj_gen;
           jj_consume_token(-1);
           throw new ParseException();
         }
@@ -178,7 +210,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
         PrimeVar();
         break;
       default:
-        jj_la1[7] = jj_gen;
+        jj_la1[11] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -254,7 +286,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           ;
           break;
         default:
-          jj_la1[8] = jj_gen;
+          jj_la1[12] = jj_gen;
           break label_4;
         }
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
@@ -265,7 +297,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           op = jj_consume_token(25).image;
           break;
         default:
-          jj_la1[9] = jj_gen;
+          jj_la1[13] = jj_gen;
           jj_consume_token(-1);
           throw new ParseException();
         }
@@ -311,7 +343,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           ;
           break;
         default:
-          jj_la1[10] = jj_gen;
+          jj_la1[14] = jj_gen;
           break label_5;
         }
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
@@ -322,7 +354,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           op = jj_consume_token(27).image;
           break;
         default:
-          jj_la1[11] = jj_gen;
+          jj_la1[15] = jj_gen;
           jj_consume_token(-1);
           throw new ParseException();
         }
@@ -384,7 +416,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
                          jjtn001.setName("-");
           break;
         default:
-          jj_la1[12] = jj_gen;
+          jj_la1[16] = jj_gen;
           jj_consume_token(-1);
           throw new ParseException();
         }
@@ -409,7 +441,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       }
       break;
     default:
-      jj_la1[13] = jj_gen;
+      jj_la1[17] = jj_gen;
       jj_consume_token(-1);
       throw new ParseException();
     }
@@ -433,7 +465,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       jj_consume_token(29);
       break;
     default:
-      jj_la1[14] = jj_gen;
+      jj_la1[18] = jj_gen;
       jj_consume_token(-1);
       throw new ParseException();
     }
@@ -461,7 +493,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
         jjtn000.jjtSetValue(null);
         break;
       default:
-        jj_la1[15] = jj_gen;
+        jj_la1[19] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -514,7 +546,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
         Range();
         break;
       default:
-        jj_la1[16] = jj_gen;
+        jj_la1[20] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -556,7 +588,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
         t = jj_consume_token(BOOLLABEL);
         break;
       default:
-        jj_la1[17] = jj_gen;
+        jj_la1[21] = jj_gen;
         jj_consume_token(-1);
         throw new ParseException();
       }
@@ -616,7 +648,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           ;
           break;
         default:
-          jj_la1[18] = jj_gen;
+          jj_la1[22] = jj_gen;
           break label_6;
         }
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
@@ -627,7 +659,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           op = jj_consume_token(25).image;
           break;
         default:
-          jj_la1[19] = jj_gen;
+          jj_la1[23] = jj_gen;
           jj_consume_token(-1);
           throw new ParseException();
         }
@@ -673,7 +705,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           ;
           break;
         default:
-          jj_la1[20] = jj_gen;
+          jj_la1[24] = jj_gen;
           break label_7;
         }
         switch ((jj_ntk==-1)?jj_ntk():jj_ntk) {
@@ -684,7 +716,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
           op = jj_consume_token(27).image;
           break;
         default:
-          jj_la1[21] = jj_gen;
+          jj_la1[25] = jj_gen;
           jj_consume_token(-1);
           throw new ParseException();
         }
@@ -745,7 +777,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
                               jjtn001.setName("-");
           break;
         default:
-          jj_la1[22] = jj_gen;
+          jj_la1[26] = jj_gen;
           jj_consume_token(-1);
           throw new ParseException();
         }
@@ -770,7 +802,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       }
       break;
     default:
-      jj_la1[23] = jj_gen;
+      jj_la1[27] = jj_gen;
       jj_consume_token(-1);
       throw new ParseException();
     }
@@ -791,7 +823,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       jj_consume_token(29);
       break;
     default:
-      jj_la1[24] = jj_gen;
+      jj_la1[28] = jj_gen;
       jj_consume_token(-1);
       throw new ParseException();
     }
@@ -807,13 +839,13 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
   static public Token jj_nt;
   static private int jj_ntk;
   static private int jj_gen;
-  static final private int[] jj_la1 = new int[25];
+  static final private int[] jj_la1 = new int[29];
   static private int[] jj_la1_0;
   static {
       jj_la1_init_0();
    }
    private static void jj_la1_init_0() {
-      jj_la1_0 = new int[] {0x600000,0x600000,0x180810,0x600000,0x600000,0x600000,0x180811,0x180000,0x3000000,0x3000000,0xc000000,0xc000000,0x3000000,0x130b1000,0x100b1000,0x11000,0x13031700,0x700,0x3000000,0x3000000,0xc000000,0xc000000,0x3000000,0x13031000,0x10031000,};
+      jj_la1_0 = new int[] {0x600000,0x600000,0x10,0x10,0x180810,0x600000,0x600000,0x600000,0x10,0x10,0x180811,0x180000,0x3000000,0x3000000,0xc000000,0xc000000,0x3000000,0x130b1000,0x100b1000,0x11000,0x13031700,0x700,0x3000000,0x3000000,0xc000000,0xc000000,0x3000000,0x13031000,0x10031000,};
    }
 
   /** Constructor with InputStream. */
@@ -834,7 +866,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 25; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 29; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -849,7 +881,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     jj_ntk = -1;
     jjtree.reset();
     jj_gen = 0;
-    for (int i = 0; i < 25; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 29; i++) jj_la1[i] = -1;
   }
 
   /** Constructor. */
@@ -866,7 +898,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 25; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 29; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -877,7 +909,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     jj_ntk = -1;
     jjtree.reset();
     jj_gen = 0;
-    for (int i = 0; i < 25; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 29; i++) jj_la1[i] = -1;
   }
 
   /** Constructor with generated Token Manager. */
@@ -893,7 +925,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     token = new Token();
     jj_ntk = -1;
     jj_gen = 0;
-    for (int i = 0; i < 25; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 29; i++) jj_la1[i] = -1;
   }
 
   /** Reinitialise. */
@@ -903,7 +935,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
     jj_ntk = -1;
     jjtree.reset();
     jj_gen = 0;
-    for (int i = 0; i < 25; i++) jj_la1[i] = -1;
+    for (int i = 0; i < 29; i++) jj_la1[i] = -1;
   }
 
   static private Token jj_consume_token(int kind) throws ParseException {
@@ -959,7 +991,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       la1tokens[jj_kind] = true;
       jj_kind = -1;
     }
-    for (int i = 0; i < 25; i++) {
+    for (int i = 0; i < 29; i++) {
       if (jj_la1[i] == jj_gen) {
         for (int j = 0; j < 32; j++) {
           if ((jj_la1_0[i] & (1<<j)) != 0) {
