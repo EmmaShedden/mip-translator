@@ -1,5 +1,6 @@
 
 import java.util.*;
+import java.util.zip.DataFormatException;
 
 /*
 public class SymbolTableEntry implements Object {

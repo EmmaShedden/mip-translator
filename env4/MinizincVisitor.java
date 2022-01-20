@@ -1,6 +1,7 @@
 
 import java.util.*;
 import java.io.*;
+import java.lang.*;
 import java.lang.StringBuilder;
 
 public class MinizincVisitor implements EnvVisitor {
@@ -150,13 +151,17 @@ public class MinizincVisitor implements EnvVisitor {
     // terminal
     public Object visit(ASTInteger node, Object data) {
         //data = node.childrenAccept(this, data);
-        return node.getName();
+        if (node.getName().equals("infinity")) {
+            return node.getName();
+        }
+        return Integer.toString( (Integer) node.jjtGetValue());
+        
     }
 
     // terminal
     public Object visit(ASTFloat node, Object data) {
         //data = node.childrenAccept(this, data);
-        return node.getName();
+        return Float.toString( (Float) node.jjtGetValue());
     }
 
     // always 2 children
@@ -174,7 +179,7 @@ public class MinizincVisitor implements EnvVisitor {
     // terminal
     public Object visit(ASTType node, Object data) {
         //data = node.childrenAccept(this, data);
-        return node.getName();
+        return node.getName().toLowerCase();
     }
 
     // 2 children

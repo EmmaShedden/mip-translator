@@ -15,8 +15,10 @@ public class Type extends Object {
     public String toString() {
         if (type == DataType.Int) {
             return "Integer";
-        } else {
+        } else if (type == DataType.Float) {
             return "Float";
+        } else {
+            return "Null";
         }
     }
 }

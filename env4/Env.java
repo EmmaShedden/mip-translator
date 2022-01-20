@@ -594,7 +594,7 @@ public class Env/*@bgen(jjtree)*/implements EnvTreeConstants, EnvConstants {/*@b
       }
       jjtree.closeNodeScope(jjtn000, true);
       jjtc000 = false;
-        jjtn000.set(t.image.toLowerCase());
+        jjtn000.set(t.image);
     } finally {
       if (jjtc000) {
         jjtree.closeNodeScope(jjtn000, true);

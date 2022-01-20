@@ -17,6 +17,8 @@ public class ASTType extends SimpleNode {
       type = DataType.Int;
     } else if (n == "Float") {
       type = DataType.Float;
+    } else {
+      type = DataType.Null;
     }
   }
 

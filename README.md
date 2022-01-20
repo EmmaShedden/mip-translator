@@ -19,13 +19,15 @@ You probably care about `env4`, as everything else is old
 **env4:** \[IN PROGRESS\]
 -   generate tree
 -   use visitor to generate symbol table
+-   supports infinity in integer bounds
+-   MiniZinc Program Builder actually looks at number values, not just the name parameter, so that the output formatting isn't quirky
 -   \[P\] use visitor to generate MiniZinc program
-    -   this exists & is even sort of tested
--   \[P\] supports infinity in integer bounds
-    -   this exists & is even sort of tested
--   \[P\] started boolean support but then gave up, technically you can declare a boolean but won't be able to assign anything logical to it
+    -   this exists but obviously the requirements part is missing
+    -   \[TODO\] separate different parts (recursive vs static problem components)
+-   \[P\] started boolean support but then gave up, technically you can declare a boolean & it will pass the AST layer but appear Null or otherwise confuse things everywhere else
 -   \[STATE\] currently, test inputs 1, 3, 4, & 6 are expected to produce an output MiniZinc file, because they're the only ones that are formatted correctly according to the parser & Symbol Table Builder
--   \[TODO\] make sure MiniZinc Program Builder actually looks at number values, not just the name parameter, so that the output formatting isn't quirky
+
+
 
 ## Usage
 
@@ -34,7 +36,9 @@ You probably care about `env4`, as everything else is old
 `java Env` to run on input from terminal (outputs to terminal)
 - Note: ctrl+d to end input
 
-`./test.sh` to recompile and run all available tests (in `env3` and above)
+`./compile.sh` to recompile the main stuff (note this doesn't recompile auto generated files outside of the central chain)
+
+`./test.sh [--build | -b]` to (optionally recompile and) run all available tests (in `env4` and above)
 
 To compile manually: 
 ```console
